@@ -140,13 +140,23 @@ class LaminaProcesador extends JPanel{
         JMenuItem negritaEmergente = new JMenuItem("Negrita");
                         
         JMenuItem cursivaEmergente = new JMenuItem("Cursiva"); 
-                 
-        negritaEmergente.addActionListener(new StyledEditorKit.BoldAction());
         
+        JMenuItem cortarEmergente = new JMenuItem("Cortar"); 
+        JMenuItem copiarEmergente = new JMenuItem("Copiar"); 
+        JMenuItem pegarEmergente = new JMenuItem("Pegar");      
+             
+        cortarEmergente.addActionListener(new StyledEditorKit.CutAction());
+        copiarEmergente.addActionListener(new StyledEditorKit.CopyAction());
+        pegarEmergente.addActionListener(new StyledEditorKit.PasteAction());
+        
+        negritaEmergente.addActionListener(new StyledEditorKit.BoldAction());        
         cursivaEmergente.addActionListener(new StyledEditorKit.ItalicAction());
         
-        emergente.add(negritaEmergente);
-        
+        emergente.add(cortarEmergente);
+        emergente.add(copiarEmergente);
+        emergente.add(pegarEmergente);
+        emergente.addSeparator();
+        emergente.add(negritaEmergente);        
         emergente.add(cursivaEmergente);
         
         miarea.setComponentPopupMenu(emergente);
@@ -158,12 +168,12 @@ class LaminaProcesador extends JPanel{
         configura_barra("src/menu_Test_Avanzado/graficos/negrita.gif").addActionListener(new StyledEditorKit.BoldAction());  
         configura_barra("src/menu_Test_Avanzado/graficos/cursiva.gif").addActionListener(new StyledEditorKit.ItalicAction());
         configura_barra("src/menu_Test_Avanzado/graficos/subrayado.gif").addActionListener(new StyledEditorKit.UnderlineAction());
-        
+        barra.addSeparator();
         configura_barra("src/menu_Test_Avanzado/graficos/azul.gif").addActionListener(new StyledEditorKit.ForegroundAction("Pone_azul", Color.BLUE));
         configura_barra("src/menu_Test_Avanzado/graficos/amarilla.gif").addActionListener(new StyledEditorKit.ForegroundAction("Pone_amarilla", Color.YELLOW));
         configura_barra("src/menu_Test_Avanzado/graficos/roja.gif").addActionListener(new StyledEditorKit.ForegroundAction("Pone_roja", Color.RED));
         configura_barra("src/menu_Test_Avanzado/graficos/negro.gif").addActionListener(new StyledEditorKit.ForegroundAction("Pone_roja", Color.BLACK));
-        
+        barra.addSeparator();
         configura_barra("src/menu_Test_Avanzado/graficos/a_izquierda.gif").addActionListener(new StyledEditorKit.AlignmentAction("Texto_Izquierda", 0));
         configura_barra("src/menu_Test_Avanzado/graficos/a_centro.gif").addActionListener(new StyledEditorKit.AlignmentAction("Texto_Centrado", 1));
         configura_barra("src/menu_Test_Avanzado/graficos/a_derecha.gif").addActionListener(new StyledEditorKit.AlignmentAction("Texto_Derecha", 2));
